@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://co08jlthsxcsn"]
+
+[ext_resource type="Script" path="res://Account/LoginButton.gd" id="1_npcpr"]
+[ext_resource type="Script" path="res://Buttons/BackButtonLogin.gd" id="1_whi6k"]
+[ext_resource type="Script" path="res://Buttons/SwapSceneButton.gd" id="2_14kx5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vxmcg"]
+blend_mode = 1
+light_mode = 1
+
+[node name="Main" type="Node2D"]
+
+[node name="Container" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_vxmcg")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Username" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 287.0
+offset_right = 736.0
+offset_bottom = 318.0
+placeholder_text = "Username"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Password" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 342.0
+offset_right = 736.0
+offset_bottom = 373.0
+placeholder_text = "Password"
+caret_blink = true
+caret_blink_interval = 0.5
+secret = true
+
+[node name="Back" type="Button" parent="Container"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 611.0
+offset_right = 148.0
+offset_bottom = 642.0
+text = "Back"
+script = ExtResource("1_whi6k")
+
+[node name="Register" type="Button" parent="Container"]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 445.0
+offset_right = 630.0
+offset_bottom = 476.0
+text = "Create Account
+"
+script = ExtResource("2_14kx5")
+scene = "res://Scenes/RegisterScene.tscn"
+
+[node name="Login" type="Button" parent="Container" node_paths=PackedStringArray("username", "password")]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 397.0
+offset_right = 629.0
+offset_bottom = 423.0
+text = "Login
+"
+script = ExtResource("1_npcpr")
+username = NodePath("../Username")
+password = NodePath("../Password")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1758cve2g0bv"]
+
+[ext_resource type="Material" uid="uid://bk17b3i7dje58" path="res://Outline.tres" id="1_47tv6"]
+[ext_resource type="Texture2D" path="res://Art/WhitePixel.png" id="2_7cqvd"]
+[ext_resource type="Texture2D" uid="uid://cohyg7jxpx8xh" path="res://Art/frames/default.png" id="2_ul3c7"]
+
+[node name="Chatbox" type="TextureRect"]
+material = ExtResource("1_47tv6")
+offset_left = 103.0
+offset_top = 57.0
+offset_right = 392.0
+offset_bottom = 265.0
+texture = ExtResource("2_7cqvd")
+
+[node name="Default" type="Sprite2D" parent="."]
+material = ExtResource("1_47tv6")
+position = Vector2(385, 39)
+scale = Vector2(0.579096, 0.621827)
+texture = ExtResource("2_ul3c7")

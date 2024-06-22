@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyl12abeauhig"]
+
+[ext_resource type="Script" path="res://Buttons/ChatButton.gd" id="1_8ay1s"]
+[ext_resource type="Script" path="res://Chat/ChatHandler.gd" id="2_huaxn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e4ll0"]
+blend_mode = 1
+
+[node name="Main" type="Control" node_paths=PackedStringArray("MessageBox")]
+top_level = true
+visibility_layer = 512
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_huaxn")
+MessageBox = NodePath("GUI/Panel/Messages")
+
+[node name="GUI" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 579.0
+offset_right = 1152.0
+offset_bottom = 646.0
+
+[node name="Panel" type="Panel" parent="GUI"]
+material = SubResource("CanvasItemMaterial_e4ll0")
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="GUI/Panel"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 67.0
+
+[node name="ChatBar" type="LineEdit" parent="GUI/Panel/MenuBar"]
+layout_mode = 2
+offset_right = 436.0
+offset_bottom = 67.0
+placeholder_text = "Text..."
+clear_button_enabled = true
+
+[node name="Button" type="Button" parent="GUI/Panel/MenuBar" node_paths=PackedStringArray("chat_bar")]
+layout_mode = 2
+offset_left = 438.0
+offset_right = 503.0
+offset_bottom = 67.0
+text = "Send
+"
+script = ExtResource("1_8ay1s")
+chat_bar = NodePath("../ChatBar")
+
+[node name="Messages" type="TextEdit" parent="GUI/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -98.0
+offset_right = 503.0
+offset_bottom = -1.0
+editable = false
+
+[connection signal="focus_entered" from="GUI/Panel/MenuBar/ChatBar" to="." method="_on_chat_bar_focus_entered"]
+[connection signal="focus_exited" from="GUI/Panel/MenuBar/ChatBar" to="." method="_on_chat_bar_focus_exited"]
+[connection signal="text_submitted" from="GUI/Panel/MenuBar/ChatBar" to="GUI/Panel/MenuBar/Button" method="_on_chat_bar_text_submitted"]
+[connection signal="text_changed" from="GUI/Panel/Messages" to="GUI/Panel/MenuBar/Button" method="_on_messages_text_changed"]

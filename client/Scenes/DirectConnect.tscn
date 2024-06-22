@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwbhy814ov3p8"]
+
+[ext_resource type="Script" path="res://Connection/PortEnter.gd" id="1_tk4rg"]
+[ext_resource type="Script" path="res://Connection/ConnectButton.gd" id="2_q27in"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u48ui"]
+blend_mode = 1
+light_mode = 1
+
+[node name="DirectConnect" type="Node2D"]
+
+[node name="Container" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_u48ui")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PORT" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 330.0
+offset_right = 736.0
+offset_bottom = 361.0
+text = "25555"
+max_length = 15
+caret_blink = true
+caret_blink_interval = 0.5
+script = ExtResource("1_tk4rg")
+
+[node name="IP" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 287.0
+offset_right = 736.0
+offset_bottom = 318.0
+text = "127.0.0.1"
+max_length = 100
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Connect" type="Button" parent="Container" node_paths=PackedStringArray("ip", "port")]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 378.0
+offset_right = 628.0
+offset_bottom = 409.0
+text = "Connect
+"
+script = ExtResource("2_q27in")
+ip = NodePath("../IP")
+port = NodePath("../PORT")
+
+[connection signal="text_changed" from="Container/PORT" to="Container/PORT" method="_on_text_changed"]
+[connection signal="pressed" from="Container/Connect" to="Container/PORT" method="_on_connect_pressed"]

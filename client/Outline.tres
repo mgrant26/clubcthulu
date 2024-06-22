@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bk17b3i7dje58"]
+
+[ext_resource type="Shader" path="res://Chat/Outline.gdshader" id="1_00e6w"]
+
+[resource]
+shader = ExtResource("1_00e6w")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 0.61
+shader_parameter/add_margins = true

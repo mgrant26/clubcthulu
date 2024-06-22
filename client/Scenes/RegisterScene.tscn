@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://5pfqfng2g81g"]
+
+[ext_resource type="Script" path="res://Buttons/SwapSceneButton.gd" id="1_en57f"]
+[ext_resource type="Script" path="res://Buttons/RegisterButton.gd" id="3_r2dk1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gut8l"]
+blend_mode = 1
+light_mode = 1
+
+[node name="RegisterScene" type="Node2D"]
+
+[node name="Container" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_gut8l")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Username" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 219.0
+offset_right = 740.0
+offset_bottom = 250.0
+placeholder_text = "Username"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Password" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 257.0
+offset_right = 739.0
+offset_bottom = 288.0
+placeholder_text = "Password"
+caret_blink = true
+caret_blink_interval = 0.5
+secret = true
+
+[node name="rptPassword" type="LineEdit" parent="Container"]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 294.0
+offset_right = 739.0
+offset_bottom = 325.0
+placeholder_text = "Repeat Password"
+caret_blink = true
+caret_blink_interval = 0.5
+secret = true
+
+[node name="Back" type="Button" parent="Container"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 611.0
+offset_right = 148.0
+offset_bottom = 642.0
+text = "Back"
+script = ExtResource("1_en57f")
+scene = "res://Scenes/LoginScreen.tscn"
+
+[node name="Register" type="Button" parent="Container" node_paths=PackedStringArray("username", "password", "verify_password")]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 341.0
+offset_right = 630.0
+offset_bottom = 372.0
+text = "Register
+"
+script = ExtResource("3_r2dk1")
+username = NodePath("../Username")
+password = NodePath("../Password")
+verify_password = NodePath("../rptPassword")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx1cmd6viuhbv"]
+
+[ext_resource type="PackedScene" uid="uid://cyl12abeauhig" path="res://Scenes/UI.tscn" id="1_tyjbh"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main" parent="CanvasLayer" instance=ExtResource("1_tyjbh")]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
